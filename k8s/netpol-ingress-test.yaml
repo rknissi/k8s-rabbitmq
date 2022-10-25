@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: rabbitmq-ingress-test
+  namespace: "testmq-namespace"
+  labels:
+    app: rabbitmq
+spec:
+  podSelector:
+    matchLabels:
+      app: rabbitmq
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          name: "test-namespace"
+      podSelector:
+        matchLabels:
+          app: test
+          app.kubernetes.io/name: testapp
+    ports:
+      - protocol: TCP
+        port: 5672
