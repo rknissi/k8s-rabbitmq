@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: rabbitmqapp
-        image: ayatachibana/rabbitmq-test:0.0.7
+        image: ayatachibana/rabbitmq-test:0.0.17
         ports:
           - containerPort: 5672
   strategy:
